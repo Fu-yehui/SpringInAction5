@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:bean="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+        <!--    <lang:groovy id="messenger"-->
+    <!--                 script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">-->
+    <!--        <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>-->
+    <!--    </lang:groovy>-->
+
+    <!--
+    when the above bean (messenger) is instantiated, this custom
+    BeanPostProcessor implementation will output the fact to the system console
+    -->
+    <bean class="Processor.InstantiationTracingBeanPostProcessor"/>
+        <bean id="person" class="entity.Person" init-method="init" >
+            <constructor-arg name="name" value="Roger"/>
+            <constructor-arg name="age" value="21"/>
+        </bean>
+<!--    <bean class="entity.Person" p:name="pName" p:age="18" init-method="init"/>-->
+<!--    <bean class="entity.Person" c:name="pName" c:age="18" init-method="init"/>-->
+
+    <bean id="configuration" class="configuration.MainConfiguration"/>
+<!--    <bean class="entity.Employee"/>-->
+<!--    <bean:component-scan base-package="entity"/>-->
+</beans>
